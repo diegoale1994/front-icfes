@@ -1,0 +1,9 @@
+<div class="container" style="height: 400px; text-align: center;">
+	<div class="sliders">
+		<ng-container *ngFor="let image of imagenes; let i = index">
+			<div class="slider" *ngIf="current == i" @fade>
+				<img class="img" [src]="image.source" [alt] = "image.name" width="600px;" heigth ="400px">
+			</div>
+		</ng-container>
+	</div>
+</div>

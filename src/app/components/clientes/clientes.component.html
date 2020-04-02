@@ -1,0 +1,46 @@
+<router-outlet></router-outlet>
+<div class="card border-primary mb-3 mt-3">
+    <div class="card-header">Clientes</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de clientes</h5>
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/nuevo']">Crear</button>
+        </div>
+        <div class="my-2 text-rigth">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/carousel']">Ver Carousel</button>
+        </div>
+        <div *ngIf="clientes?.length==0" class="alert alert-info">
+            No se encuentran Registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped animated fadeIn fast" *ngIf="clientes?.length>0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                    <th>Documento</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes">
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellido}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.edad}}</td>
+                    <td>{{cliente.documento}}</td>
+                    <td>
+                        <button type="button" name="editar" [routerLink]="['/edicion',cliente.id]"
+                            class="btn btn-success">Editar</button>
+                    </td>
+                    <td>
+                        <button type="button" name="eliminar" (click)='eliminarCliente(cliente)'
+                            class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
